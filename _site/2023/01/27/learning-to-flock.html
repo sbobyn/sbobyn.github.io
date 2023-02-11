@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Simulating Flocks with Graph Neural Networks | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Simulating Flocks with Graph Neural Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<link rel="canonical" href="http://localhost:4000/2023/01/27/learning-to-flock.html" />
+<meta property="og:url" content="http://localhost:4000/2023/01/27/learning-to-flock.html" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-27T16:00:00-08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Simulating Flocks with Graph Neural Networks" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-01-27T16:00:00-08:00","datePublished":"2023-01-27T16:00:00-08:00","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Simulating Flocks with Graph Neural Networks","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2023/01/27/learning-to-flock.html"},"url":"http://localhost:4000/2023/01/27/learning-to-flock.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Your awesome title</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Simulating Flocks with Graph Neural Networks</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-01-27T16:00:00-08:00" itemprop="datePublished">Jan 27, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <div align="center">
+<img src="/imgs/rolloutcomp.gif" alt="heading" width="1000" />
+</div>
+
+<p>To get the most out of this post, checkout the <a href="https://colab.research.google.com/drive/1gBYj6acd6Ju_8DGWKp-xArLipwLpbCF2?usp=sharing">supplementary Colab Notebook!</a></p>
+
+<p>In 1986, Craig Reynolds introduced the <em>Boids</em> algorithm intended to simulate flocking, i.e., the coordinated motion exhibited by groups of birds. The motion of the birds (denoted, boids) in Reynolds’ model is governed by three simple rules that are applied to each bird: <em>seperation</em>, <em>alignment</em>, and <em>cohension</em>. The rules as defined in Reynolds’ original paper are as follows. [1]</p>
+
+<div align="center">
+<figure class="figure img">
+<p><img src="/imgs/seperation.png" alt="seperation" /></p>
+  <figcaption><strong>Seperation</strong>: avoid collisions with nearby flockmates.[2]</figcaption>
+</figure>
+</div>
+
+<div align="center">
+<figure class="figure img">
+<p><img src="/imgs/cohesion.png" alt="seperation" /></p>
+  <figcaption><strong>Cohesion</strong>: attempt to stay close to nearby flockmates.[2]</figcaption>
+</figure>
+</div>
+
+<div align="center">
+<figure class="figure img">
+<p><img src="/imgs/alignment.png" alt="seperation" /></p>
+  <figcaption><strong>Alignment</strong>: attempt to match velocity with nearby flockmates.[2]</figcaption>
+</figure>
+</div>
+
+<p>At each timestep, each boid determines its neighbours and makes a decision on how to apply each of the rules. My own implementation below simply looks in a fixed radius around each boid and combines the accelerations provided by each rule with a weighted average.</p>
+
+<h1 id="simulating-physics-with-graph-neural-networks">Simulating Physics with Graph Neural Networks</h1>
+
+<p>The simulation of complex physics is important for many engineering applications. Recently, a group at DeepMind showed that they were able to train a Graph Neural Network (GNN) to generate such simulations [3].</p>
+
+<div align="center">
+<figure>
+<p><img src="/imgs/water_ramps_rollout.gif" alt="waterdrop" /></p>
+  <figcaption>On the left is a traditional physics simulation. The righthand side is a rollout generated by DeepMind’s GNS after it was given the same initial positions as on the left. [3]</figcaption>
+</figure>
+</div>
+
+<p>The authors of the paper claim that any system that can be modelled as a particle system can, in principle, be simulated by their GNN-based framework. Hopefully the connection is clear: the boids model can be interpreted as a physics-based particle system wherein the boids are the particles each exhibiting forces corresponding to the rules of motion (cohesion, seperation, and alignment).</p>
+
+<h1 id="graph-network-simulator">Graph Network Simulator</h1>
+
+<p>Here, a <em>simulator</em> is a function over the world states of a particle system. In particular, it updates the current state of the world according to the dynamics at play in the system. A <em>graph</em> is a collection of nodes and links connecting them. In our case, the nodes are boids and the links correspond to the dynamics between neighbouring boids. For each time step, the Graph Network Simulator aggregates the dynamics occuring at each node and uses that information to output an acceleration for each boid that is then used to update the scene to its coensequent state. A <em>rollout</em> is simply a sequence of causally consequent states generated by the simulator.</p>
+
+<p>The computation of the GNS will be done by a message-passing Graph Neural Network.</p>
+
+<div align="center">
+<figure>
+<p><img src="/imgs/GNS.png" alt="GNS" /></p>
+  <figcaption>Figure taken from [3].</figcaption>
+</figure>
+</div>
+
+<h1 id="the-gnn">The GNN</h1>
+
+<p>The GNN is composed of three parts: an encoder, a process, and a decoder.</p>
+
+<h1 id="encoder">Encoder</h1>
+
+<p>The encoder takes as input a world state instance as a graph and embeds the nodes and edges with a learned multi-layer perceptron (MLP) layer.</p>
+
+<h1 id="processor">Processor</h1>
+
+<p>The processor computes and aggregates the interactions among the nodes using learned message-passing. This means that the graph embeddeding is mapped to an other graph embedding via a learned function over the nodes and edges.</p>
+
+<h1 id="decoder">Decoder</h1>
+
+<p>The decoder takes graph embedding and maps it to a real-value for each node corresponding to an acceleration produced by local dynamics. The mapping is computed by an other learned MLP layer.</p>
+
+<h1 id="dataset">Dataset</h1>
+
+<p>For the dataset, we implemented the Boids algorithm as described above and used it to generate 350 trajectories. Each trajectory was generated by initializing $N$ boids (where $N$ is chosen uniformly at random between 275 and 325) with random initial positions and generating a 1000 frame long rollout using our Boids implementation.</p>
+
+<h1 id="converting-data-to-graphs">Converting data to graphs</h1>
+
+<p>Now, our simulator needs to predict the accelerations that should occur for each boid given a graph representation of the current state. So first, we need to embed into the graph the necessary information for it to be able to learn the seperation, cohesion, and alignment rules. To so we take each trajectory frame and create a node for every boid in the frame. We then add an edge between boids that are within a distance of R of each other (R here is the same R used for our Boids implementation). We then add the following features to each node taken from their corresponding boid: current velocity, distance to each boundary (upper, lower, left, right). Now for the edges we add the following features from their corresponding boid<em>s</em>: relative displacement, relative distance. Note that obstacles are omitted here, however, obstacles could easiliy be included by introducing a second node type with only one feature and in this case the boundary features mentioned above could be replaced with obstacle nodes.</p>
+
+<h1 id="making-predictions">Making predictions</h1>
+
+<p>Finally, we compute the accelerations that would take the current state to its subsequent state and use these as labels on the current graph so that we can perform supervised learning. The loss function is computed by taking the mean squared error of the predicted accelerations and the true accelerations.</p>
+
+<h1 id="rollouts">Rollouts</h1>
+
+<p>Due to the semi-chaotic nature of the system, small errors in the simulator’s predictions will quickly accumulate and cause unstable behavior. To prevent this, we add random-walk noise to the input graph to represent such error so that the simulator is trained to make predictions with imperfect information about the world.</p>
+
+<h1 id="results">Results</h1>
+
+<p>The model was trained with a mini-batch size of 16 for a total of 22000 mini-batches over 1 epoch. The training was done on a high-performance GPU and took only about 45 minutes. For details on the hidden-layer sizes see the attached Colab.</p>
+
+<p>Here is the final loss curve.</p>
+
+<div align="center">
+<figure class="figure img">
+<p><img src="/imgs/loss.png" alt="seperation" /></p>
+  <figcaption>The loss curve obtained after training for 22000 mini-batch gradient updates with a mini-batch size of 16. The loss is computed by taking the mean squared error of the predicted and true accelerations.</figcaption>
+</figure>
+</div>
+
+<p>Now let’s check out the model’s rollouts on the test set! Predictably, due to the semi-chaotic nature of the system, the exact position of the boids’ trajectories produced by the model quickly diverge from the ground truth. However, the model can convincingly simulate the qualatitive behavior expected of the Boids algorithm!</p>
+
+<div align="center">
+<figure class="figure img">
+<p><img src="/imgs/rolloutcomp.gif" alt="comp" /></p>
+  <figcaption>On the left is a rollout generated by the Boids algorithm. On the right is a rollout generated by the trained GNS given the same initial conditions.</figcaption>
+</figure>
+</div>
+
+<p>A desirable trait of GNNs is that they do not depend on the size of the input graph. Here are some rollouts our model produced over graph sizes much larger and smaller than it saw during training.</p>
+
+<p>First, a much larger graph.</p>
+
+<div align="center">
+<img src="/imgs/rolloutlarge.gif" alt="rolloutlarge" width="500" />
+</div>
+
+<p>Now, a much smaller graph.</p>
+
+<div align="center">
+<img src="/imgs/rolloutsmall.gif" alt="rolloutsmall" width="500" />
+</div>
+
+<p>As you can see, because the inductive bias emphasizes learning local graph dynamics, the graph size does not impact the performance of the GNN!</p>
+
+<h1 id="google-colab">Google Colab</h1>
+
+<p>A Colab Notebook for this project is available <a href="https://colab.research.google.com/drive/1gBYj6acd6Ju_8DGWKp-xArLipwLpbCF2?usp=sharing">here</a>. Copy it to your own drive and reproduce the results for yourself!</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>This post discussed using a GNN-based physics simulator to learn to simulate the Boids algorithm. For more technical details on the underlying concepts, check out the resources below!</p>
+
+<h1 id="references">References</h1>
+
+<p>[1] C. Reynolds. Flocks, Herds, and Schoolds: A Distributed Behavioral Model. Originally in Copmuter Graphics, 21 Jul 1987, page 25-34. URL http://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/.</p>
+
+<p>[2] C. Reynolds. Boids: Background and Update. Last update: September 6, 2001. URL https://www.red3d.com/cwr/boids/.</p>
+
+<p>[3] A. Sanchez-Gonzalez, J. Godwin, T. Pfaff, R. Ying, J. Leskovec, and P. W. Battaglia. Learning to simulate complex physics with graph networks. In Proceedings of the 37th International Conference on Machine Learning, ICML 2020, 13–18 July 2020, Virtual Event, volume 119 of Proceedings of Machine Learning Research, pages 8459–8468. PMLR, 2020. URL http://proceedings.mlr.press/v119/sanchez-gonzalez20a.html.</p>
+
+<p>[4] H. Shi, P. Chen, S. Li. Simulating Complex Physics with Graph Networks: Step by Step. In Stanford CS224W GraphML Tutorials, Medium, 25 Jan 2022. URL https://medium.com/stanford-cs224w/simulating-complex-physics-with-graph-networks-step-by-step-177354cb9b05.</p>
+
+  </div><a class="u-url" href="/2023/01/27/learning-to-flock.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Your awesome title</li><li><a class="u-email" href="mailto:your-email@example.com">your-email@example.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-28T15:46:42-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/01/28/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-01-28T14:06:33-08:00</published><updated>2023-01-28T14:06:33-08:00</updated><id>http://localhost:4000/jekyll/update/2023/01/28/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/28/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-11T12:10:49-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/01/28/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-01-28T14:06:33-08:00</published><updated>2023-01-28T14:06:33-08:00</updated><id>http://localhost:4000/jekyll/update/2023/01/28/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/28/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
 
@@ -9,9 +9,152 @@
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Tom&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &apos;Hi, Tom&apos; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Simulating Flocks with Graph Neural Networks</title><link href="http://localhost:4000/2023/01/27/learning-to-flock.html" rel="alternate" type="text/html" title="Simulating Flocks with Graph Neural Networks" /><published>2023-01-27T16:00:00-08:00</published><updated>2023-01-27T16:00:00-08:00</updated><id>http://localhost:4000/2023/01/27/learning-to-flock</id><content type="html" xml:base="http://localhost:4000/2023/01/27/learning-to-flock.html">&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/imgs/rolloutcomp.gif&quot; alt=&quot;heading&quot; width=&quot;1000&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To get the most out of this post, checkout the &lt;a href=&quot;https://colab.research.google.com/drive/1gBYj6acd6Ju_8DGWKp-xArLipwLpbCF2?usp=sharing&quot;&gt;supplementary Colab Notebook!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In 1986, Craig Reynolds introduced the &lt;em&gt;Boids&lt;/em&gt; algorithm intended to simulate flocking, i.e., the coordinated motion exhibited by groups of birds. The motion of the birds (denoted, boids) in Reynolds’ model is governed by three simple rules that are applied to each bird: &lt;em&gt;seperation&lt;/em&gt;, &lt;em&gt;alignment&lt;/em&gt;, and &lt;em&gt;cohension&lt;/em&gt;. The rules as defined in Reynolds’ original paper are as follows. [1]&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure class=&quot;figure img&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/seperation.png&quot; alt=&quot;seperation&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;&lt;strong&gt;Seperation&lt;/strong&gt;: avoid collisions with nearby flockmates.[2]&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure class=&quot;figure img&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/cohesion.png&quot; alt=&quot;seperation&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;&lt;strong&gt;Cohesion&lt;/strong&gt;: attempt to stay close to nearby flockmates.[2]&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure class=&quot;figure img&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/alignment.png&quot; alt=&quot;seperation&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;&lt;strong&gt;Alignment&lt;/strong&gt;: attempt to match velocity with nearby flockmates.[2]&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At each timestep, each boid determines its neighbours and makes a decision on how to apply each of the rules. My own implementation below simply looks in a fixed radius around each boid and combines the accelerations provided by each rule with a weighted average.&lt;/p&gt;
+
+&lt;h1 id=&quot;simulating-physics-with-graph-neural-networks&quot;&gt;Simulating Physics with Graph Neural Networks&lt;/h1&gt;
+
+&lt;p&gt;The simulation of complex physics is important for many engineering applications. Recently, a group at DeepMind showed that they were able to train a Graph Neural Network (GNN) to generate such simulations [3].&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/water_ramps_rollout.gif&quot; alt=&quot;waterdrop&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;On the left is a traditional physics simulation. The righthand side is a rollout generated by DeepMind’s GNS after it was given the same initial positions as on the left. [3]&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The authors of the paper claim that any system that can be modelled as a particle system can, in principle, be simulated by their GNN-based framework. Hopefully the connection is clear: the boids model can be interpreted as a physics-based particle system wherein the boids are the particles each exhibiting forces corresponding to the rules of motion (cohesion, seperation, and alignment).&lt;/p&gt;
+
+&lt;h1 id=&quot;graph-network-simulator&quot;&gt;Graph Network Simulator&lt;/h1&gt;
+
+&lt;p&gt;Here, a &lt;em&gt;simulator&lt;/em&gt; is a function over the world states of a particle system. In particular, it updates the current state of the world according to the dynamics at play in the system. A &lt;em&gt;graph&lt;/em&gt; is a collection of nodes and links connecting them. In our case, the nodes are boids and the links correspond to the dynamics between neighbouring boids. For each time step, the Graph Network Simulator aggregates the dynamics occuring at each node and uses that information to output an acceleration for each boid that is then used to update the scene to its coensequent state. A &lt;em&gt;rollout&lt;/em&gt; is simply a sequence of causally consequent states generated by the simulator.&lt;/p&gt;
+
+&lt;p&gt;The computation of the GNS will be done by a message-passing Graph Neural Network.&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/GNS.png&quot; alt=&quot;GNS&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;Figure taken from [3].&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;the-gnn&quot;&gt;The GNN&lt;/h1&gt;
+
+&lt;p&gt;The GNN is composed of three parts: an encoder, a process, and a decoder.&lt;/p&gt;
+
+&lt;h1 id=&quot;encoder&quot;&gt;Encoder&lt;/h1&gt;
+
+&lt;p&gt;The encoder takes as input a world state instance as a graph and embeds the nodes and edges with a learned multi-layer perceptron (MLP) layer.&lt;/p&gt;
+
+&lt;h1 id=&quot;processor&quot;&gt;Processor&lt;/h1&gt;
+
+&lt;p&gt;The processor computes and aggregates the interactions among the nodes using learned message-passing. This means that the graph embeddeding is mapped to an other graph embedding via a learned function over the nodes and edges.&lt;/p&gt;
+
+&lt;h1 id=&quot;decoder&quot;&gt;Decoder&lt;/h1&gt;
+
+&lt;p&gt;The decoder takes graph embedding and maps it to a real-value for each node corresponding to an acceleration produced by local dynamics. The mapping is computed by an other learned MLP layer.&lt;/p&gt;
+
+&lt;h1 id=&quot;dataset&quot;&gt;Dataset&lt;/h1&gt;
+
+&lt;p&gt;For the dataset, we implemented the Boids algorithm as described above and used it to generate 350 trajectories. Each trajectory was generated by initializing $N$ boids (where $N$ is chosen uniformly at random between 275 and 325) with random initial positions and generating a 1000 frame long rollout using our Boids implementation.&lt;/p&gt;
+
+&lt;h1 id=&quot;converting-data-to-graphs&quot;&gt;Converting data to graphs&lt;/h1&gt;
+
+&lt;p&gt;Now, our simulator needs to predict the accelerations that should occur for each boid given a graph representation of the current state. So first, we need to embed into the graph the necessary information for it to be able to learn the seperation, cohesion, and alignment rules. To so we take each trajectory frame and create a node for every boid in the frame. We then add an edge between boids that are within a distance of R of each other (R here is the same R used for our Boids implementation). We then add the following features to each node taken from their corresponding boid: current velocity, distance to each boundary (upper, lower, left, right). Now for the edges we add the following features from their corresponding boid&lt;em&gt;s&lt;/em&gt;: relative displacement, relative distance. Note that obstacles are omitted here, however, obstacles could easiliy be included by introducing a second node type with only one feature and in this case the boundary features mentioned above could be replaced with obstacle nodes.&lt;/p&gt;
+
+&lt;h1 id=&quot;making-predictions&quot;&gt;Making predictions&lt;/h1&gt;
+
+&lt;p&gt;Finally, we compute the accelerations that would take the current state to its subsequent state and use these as labels on the current graph so that we can perform supervised learning. The loss function is computed by taking the mean squared error of the predicted accelerations and the true accelerations.&lt;/p&gt;
+
+&lt;h1 id=&quot;rollouts&quot;&gt;Rollouts&lt;/h1&gt;
+
+&lt;p&gt;Due to the semi-chaotic nature of the system, small errors in the simulator’s predictions will quickly accumulate and cause unstable behavior. To prevent this, we add random-walk noise to the input graph to represent such error so that the simulator is trained to make predictions with imperfect information about the world.&lt;/p&gt;
+
+&lt;h1 id=&quot;results&quot;&gt;Results&lt;/h1&gt;
+
+&lt;p&gt;The model was trained with a mini-batch size of 16 for a total of 22000 mini-batches over 1 epoch. The training was done on a high-performance GPU and took only about 45 minutes. For details on the hidden-layer sizes see the attached Colab.&lt;/p&gt;
+
+&lt;p&gt;Here is the final loss curve.&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure class=&quot;figure img&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/loss.png&quot; alt=&quot;seperation&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;The loss curve obtained after training for 22000 mini-batch gradient updates with a mini-batch size of 16. The loss is computed by taking the mean squared error of the predicted and true accelerations.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s check out the model’s rollouts on the test set! Predictably, due to the semi-chaotic nature of the system, the exact position of the boids’ trajectories produced by the model quickly diverge from the ground truth. However, the model can convincingly simulate the qualatitive behavior expected of the Boids algorithm!&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;figure class=&quot;figure img&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/imgs/rolloutcomp.gif&quot; alt=&quot;comp&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;On the left is a rollout generated by the Boids algorithm. On the right is a rollout generated by the trained GNS given the same initial conditions.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A desirable trait of GNNs is that they do not depend on the size of the input graph. Here are some rollouts our model produced over graph sizes much larger and smaller than it saw during training.&lt;/p&gt;
+
+&lt;p&gt;First, a much larger graph.&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/imgs/rolloutlarge.gif&quot; alt=&quot;rolloutlarge&quot; width=&quot;500&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now, a much smaller graph.&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/imgs/rolloutsmall.gif&quot; alt=&quot;rolloutsmall&quot; width=&quot;500&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As you can see, because the inductive bias emphasizes learning local graph dynamics, the graph size does not impact the performance of the GNN!&lt;/p&gt;
+
+&lt;h1 id=&quot;google-colab&quot;&gt;Google Colab&lt;/h1&gt;
+
+&lt;p&gt;A Colab Notebook for this project is available &lt;a href=&quot;https://colab.research.google.com/drive/1gBYj6acd6Ju_8DGWKp-xArLipwLpbCF2?usp=sharing&quot;&gt;here&lt;/a&gt;. Copy it to your own drive and reproduce the results for yourself!&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;This post discussed using a GNN-based physics simulator to learn to simulate the Boids algorithm. For more technical details on the underlying concepts, check out the resources below!&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;p&gt;[1] C. Reynolds. Flocks, Herds, and Schoolds: A Distributed Behavioral Model. Originally in Copmuter Graphics, 21 Jul 1987, page 25-34. URL http://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/.&lt;/p&gt;
+
+&lt;p&gt;[2] C. Reynolds. Boids: Background and Update. Last update: September 6, 2001. URL https://www.red3d.com/cwr/boids/.&lt;/p&gt;
+
+&lt;p&gt;[3] A. Sanchez-Gonzalez, J. Godwin, T. Pfaff, R. Ying, J. Leskovec, and P. W. Battaglia. Learning to simulate complex physics with graph networks. In Proceedings of the 37th International Conference on Machine Learning, ICML 2020, 13–18 July 2020, Virtual Event, volume 119 of Proceedings of Machine Learning Research, pages 8459–8468. PMLR, 2020. URL http://proceedings.mlr.press/v119/sanchez-gonzalez20a.html.&lt;/p&gt;
+
+&lt;p&gt;[4] H. Shi, P. Chen, S. Li. Simulating Complex Physics with Graph Networks: Step by Step. In Stanford CS224W GraphML Tutorials, Medium, 25 Jan 2022. URL https://medium.com/stanford-cs224w/simulating-complex-physics-with-graph-networks-step-by-step-177354cb9b05.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
