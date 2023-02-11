@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-11T13:06:05-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Personal blog</title><subtitle>Site under construction</subtitle><entry><title type="html">Simulating Flocks with Graph Neural Networks</title><link href="http://localhost:4000/2023/01/27/learning-to-flock.html" rel="alternate" type="text/html" title="Simulating Flocks with Graph Neural Networks" /><published>2023-01-27T16:00:00-08:00</published><updated>2023-01-27T16:00:00-08:00</updated><id>http://localhost:4000/2023/01/27/learning-to-flock</id><content type="html" xml:base="http://localhost:4000/2023/01/27/learning-to-flock.html">&lt;div align=&quot;center&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-11T15:28:11-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Personal blog</title><subtitle>Site under construction</subtitle><entry><title type="html">Simulating Flocks with Graph Neural Networks</title><link href="http://localhost:4000/2023/01/27/learning-to-flock.html" rel="alternate" type="text/html" title="Simulating Flocks with Graph Neural Networks" /><published>2023-01-27T16:00:00-08:00</published><updated>2023-01-27T16:00:00-08:00</updated><id>http://localhost:4000/2023/01/27/learning-to-flock</id><content type="html" xml:base="http://localhost:4000/2023/01/27/learning-to-flock.html">&lt;div align=&quot;center&quot;&gt;
 &lt;img src=&quot;/imgs/rolloutcomp.gif&quot; alt=&quot;heading&quot; width=&quot;1000&quot; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;To get the most out of this post, checkout the &lt;a href=&quot;https://colab.research.google.com/drive/1gBYj6acd6Ju_8DGWKp-xArLipwLpbCF2?usp=sharing&quot;&gt;supplementary Colab Notebook!&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;In 1986, Craig Reynolds introduced the &lt;em&gt;Boids&lt;/em&gt; algorithm intended to simulate flocking, i.e., the coordinated motion exhibited by groups of birds. The motion of the birds (denoted, boids) in Reynolds’ model is governed by three simple rules that are applied to each bird: &lt;em&gt;seperation&lt;/em&gt;, &lt;em&gt;alignment&lt;/em&gt;, and &lt;em&gt;cohension&lt;/em&gt;. The rules as defined in Reynolds’ original paper are as follows. [1]&lt;/p&gt;
+&lt;p&gt;In 1986, Craig Reynolds introduced the Boids algorithm intended to simulate flocking, i.e., the coordinated motion exhibited by groups of birds. The motion of the birds (denoted, boids) in Reynolds’ model is governed by three simple rules that are applied to each bird: separation, alignment, and cohesion. The rules as defined in Reynolds’ original paper are as follows. [1]&lt;/p&gt;
 
 &lt;div align=&quot;center&quot;&gt;
 &lt;figure class=&quot;image&quot;&gt;
   &lt;img src=&quot;/imgs/seperation.png&quot; /&gt;
-  &lt;figcaption&gt;&lt;b&gt;Seperation&lt;/b&gt;: avoid collisions with nearby flockmates.[2]&lt;/figcaption&gt;
+  &lt;figcaption&gt;&lt;b&gt;Separation&lt;/b&gt;: avoid collisions with nearby flockmates.[2]&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;/div&gt;
 
@@ -27,11 +27,11 @@
 &lt;/figure&gt;
 &lt;/div&gt;
 
-&lt;p&gt;At each timestep, each boid determines its neighbours and makes a decision on how to apply each of the rules. My own implementation below simply looks in a fixed radius around each boid and combines the accelerations provided by each rule with a weighted average.&lt;/p&gt;
+&lt;p&gt;At each timestep, each boid determines its neighbours and makes a decision on how to apply each of the rules. My own implementation below simply looks within a fixed radius around each boid and combines the accelerations provided by each rule with a weighted average.&lt;/p&gt;
 
 &lt;h1 id=&quot;simulating-physics-with-graph-neural-networks&quot;&gt;Simulating Physics with Graph Neural Networks&lt;/h1&gt;
 
-&lt;p&gt;The simulation of complex physics is important for many engineering applications. Recently, a group at DeepMind showed that they were able to train a Graph Neural Network (GNN) to generate such simulations [3].&lt;/p&gt;
+&lt;p&gt;Simulation of complex physics is important for many engineering applications. Recently, a group at DeepMind showed that they were able to train a Graph Neural Network (GNN) to generate such simulations [3].&lt;/p&gt;
 
 &lt;div align=&quot;center&quot;&gt;
 &lt;figure class=&quot;image&quot;&gt;
@@ -40,11 +40,11 @@
 &lt;/figure&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The authors of the paper claim that any system that can be modelled as a particle system can, in principle, be simulated by their GNN-based framework. Hopefully the connection is clear: the boids model can be interpreted as a physics-based particle system wherein the boids are the particles each exhibiting forces corresponding to the rules of motion (cohesion, seperation, and alignment).&lt;/p&gt;
+&lt;p&gt;The authors of the paper claim that any system that can be modeled as a particle system can, in principle, be simulated by their GNN-based framework. Hopefully the connection is clear: the boids model can be interpreted as a physics-based particle system wherein the boids are the particles each exhibiting forces corresponding to the rules of motion (cohesion, separation, and alignment).&lt;/p&gt;
 
 &lt;h1 id=&quot;graph-network-simulator&quot;&gt;Graph Network Simulator&lt;/h1&gt;
 
-&lt;p&gt;Here, a &lt;em&gt;simulator&lt;/em&gt; is a function over the world states of a particle system. In particular, it updates the current state of the world according to the dynamics at play in the system. A &lt;em&gt;graph&lt;/em&gt; is a collection of nodes and links connecting them. In our case, the nodes are boids and the links correspond to the dynamics between neighbouring boids. For each time step, the Graph Network Simulator aggregates the dynamics occuring at each node and uses that information to output an acceleration for each boid that is then used to update the scene to its coensequent state. A &lt;em&gt;rollout&lt;/em&gt; is simply a sequence of causally consequent states generated by the simulator.&lt;/p&gt;
+&lt;p&gt;Here, a &lt;em&gt;simulator&lt;/em&gt; is a function over the world states of a particle system. In particular, it updates the current state of the world according to the dynamics at play in the system. A graph is a collection of nodes and links connecting them. In our case, the nodes are boids and the links correspond to the dynamics between neighbouring boids. For each time step, the Graph Network Simulator aggregates the dynamics occurring at each node and uses that information to output an acceleration for each boid that is then used to update the scene to its consequent state. A rollout is simply a sequence of causally consequent states generated by the simulator.&lt;/p&gt;
 
 &lt;p&gt;The computation of the GNS will be done by a message-passing Graph Neural Network.&lt;/p&gt;
 
@@ -65,7 +65,7 @@
 
 &lt;h1 id=&quot;processor&quot;&gt;Processor&lt;/h1&gt;
 
-&lt;p&gt;The processor computes and aggregates the interactions among the nodes using learned message-passing. This means that the graph embeddeding is mapped to an other graph embedding via a learned function over the nodes and edges.&lt;/p&gt;
+&lt;p&gt;The processor computes and aggregates the interactions among the nodes using learned message-passing. This means that the graph embedding is mapped to an other graph embedding via a learned function over the nodes and edges.&lt;/p&gt;
 
 &lt;h1 id=&quot;decoder&quot;&gt;Decoder&lt;/h1&gt;
 
@@ -77,7 +77,7 @@
 
 &lt;h1 id=&quot;converting-data-to-graphs&quot;&gt;Converting data to graphs&lt;/h1&gt;
 
-&lt;p&gt;Now, our simulator needs to predict the accelerations that should occur for each boid given a graph representation of the current state. So first, we need to embed into the graph the necessary information for it to be able to learn the seperation, cohesion, and alignment rules. To so we take each trajectory frame and create a node for every boid in the frame. We then add an edge between boids that are within a distance of R of each other (R here is the same R used for our Boids implementation). We then add the following features to each node taken from their corresponding boid: current velocity, distance to each boundary (upper, lower, left, right). Now for the edges we add the following features from their corresponding boid&lt;em&gt;s&lt;/em&gt;: relative displacement, relative distance. Note that obstacles are omitted here, however, obstacles could easiliy be included by introducing a second node type with only one feature and in this case the boundary features mentioned above could be replaced with obstacle nodes.&lt;/p&gt;
+&lt;p&gt;Now, our simulator needs to predict the accelerations that should occur for each boid given a graph representation of the current state. So first, we need to embed into the graph the necessary information for it to be able to learn the separation, cohesion, and alignment rules. To do so we take each trajectory frame and create a node for every boid in the frame. We then add an edge between boids that are within a distance of R of each other (R here is the same R used for our Boids implementation). We then add the following features to each node taken from their corresponding boid: current velocity, distance to each boundary (upper, lower, left, right). Now for the edges we add the following features from their corresponding boid&lt;em&gt;s&lt;/em&gt;: relative displacement, relative distance. Note that obstacles are omitted here, however, obstacles could easily be included by introducing a second node type with only one feature and in this case the boundary features mentioned above could be replaced with obstacle nodes.&lt;/p&gt;
 
 &lt;h1 id=&quot;making-predictions&quot;&gt;Making predictions&lt;/h1&gt;
 
@@ -85,11 +85,11 @@
 
 &lt;h1 id=&quot;rollouts&quot;&gt;Rollouts&lt;/h1&gt;
 
-&lt;p&gt;Due to the semi-chaotic nature of the system, small errors in the simulator’s predictions will quickly accumulate and cause unstable behavior. To prevent this, we add random-walk noise to the input graph to represent such error so that the simulator is trained to make predictions with imperfect information about the world.&lt;/p&gt;
+&lt;p&gt;Due to the semi-chaotic nature of the system, small errors in the simulator’s predictions will quickly accumulate and cause unstable behavior. To prevent this, we add random-walk noise to the input graph to represent such errors so that the simulator is trained to make predictions with imperfect information about the world.&lt;/p&gt;
 
 &lt;h1 id=&quot;results&quot;&gt;Results&lt;/h1&gt;
 
-&lt;p&gt;The model was trained with a mini-batch size of 16 for a total of 22000 mini-batches over 1 epoch. The training was done on a high-performance GPU and took only about 45 minutes. For details on the hidden-layer sizes see the attached Colab.&lt;/p&gt;
+&lt;p&gt;The model was trained with a mini-batch size of 16 for a total of 22000 mini-batches over 1 epoch. The training was done on a high-performance GPU and took only about 45 minutes. For details on the hidden-layer sizes, see the attached Colab.&lt;/p&gt;
 
 &lt;p&gt;Here is the final loss curve.&lt;/p&gt;
 
@@ -100,7 +100,7 @@
 &lt;/figure&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Now let’s check out the model’s rollouts on the test set! Predictably, due to the semi-chaotic nature of the system, the exact position of the boids’ trajectories produced by the model quickly diverge from the ground truth. However, the model can convincingly simulate the qualatitive behavior expected of the Boids algorithm!&lt;/p&gt;
+&lt;p&gt;Now let’s check out the model’s rollouts on the test set! Predictably, due to the semi-chaotic nature of the system, the exact position of the boids’ trajectories produced by the model quickly diverge from the ground truth. However, the model can convincingly simulate the qualitative behavior expected of the Boids algorithm!&lt;/p&gt;
 
 &lt;div align=&quot;center&quot;&gt;
 &lt;figure class=&quot;image&quot;&gt;
